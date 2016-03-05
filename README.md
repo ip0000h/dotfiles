@@ -1,20 +1,16 @@
 # Dotfiles
 
-
 ## What's included
 
-- Bash settings, aliases and useful scripts
-
-- Htop configuration
-
-- MC file-manager configuration
-
-- Tmux configuration
-
-- Urxvt terminal configuration
-
-- Vim configuration
-
+-   shell script for automatic install
+-   bash settings, aliases and useful scripts
+-   htop configuration
+-   mc file-manager configuration
+-   pyenv python version manager configuration
+-   tmux configuration
+-   urxvt terminal configuration
+-   vim configuration
+-   zsh configuration
 
 ## Screenshot
 
