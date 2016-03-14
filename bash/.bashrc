@@ -106,5 +106,5 @@ fi
 
 ## user-specific variables
 if [ -f ~/.bashrc_custom ]; then
-    source ~/.bashrc_custom
+    . ~/.bashrc_custom
 fi

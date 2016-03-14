@@ -1,16 +1,43 @@
 #!/usr/bin/env bash
-echo 'Hello! You are running install script for dotfiles(configuration files for urxvt, bash, tmux, vim, etc)'
+################################
+#Start
+echo 'Hello! You are running install script for dotfiles(configuration files for urxvt, bash, tmux, vim, etc).'
 echo 'Original project page - https://github.com/ip0000h/dotfiles'
 echo 'Starting...'
+################################
+# Bash
 echo 'Copying bash configuration files...'
-ln -fs .bashrc ~/.bashrc
-ln -fs Documents/Projects/github/dotfiles/bash/.bash_aliases ~/.bash_aliases
-echo 'Done!'
+ln -fs "$(pwd)/bash/.bashrc" ~/.bashrc
+ln -fs "$(pwd)/bash/.bash_aliases" ~/.bash_aliases
+echo 'Done! Bash configuration installed.'
+################################
+# PyEnv
 echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
-echo '# PyEnv configuration' >> ~/.bash_custom
+echo '# PyEnv configuration' >> ~/.bashrc_custom
 curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-echo 'export PATH="/home/ip0000h/.pyenv/bin:$PATH"' >> ~/.bash_custom
-echo 'eval "$(pyenv init -)"' >> ~/.bash_custom
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_custom
+echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc_custom
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc_custom
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc_custom
+source ~/.bashrc_custom
 bash -c 'pyenv update'
-echo 'Done!'
+echo 'Done! PyEnv configuration installed.'
+################################
+# Tmux
+echo 'Copying tmux configuration...'
+echo 'Installing TPM tmux plugin manager(https://github.com/tmux-plugins/tpm)...'
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -fs "$(pwd)/tmux/.tmux.conf" ~/.tmux.conf
+tmux source ~/.tmux.conf
+echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
+################################
+# Vim
+echo 'Copying vim configuration...'
+echo 'Installing TPM tmux plugin manager(https://github.com/tmux-plugins/tpm)...'
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -fs "$(pwd)/tmux/.tmux.conf" ~/.tmux.conf
+tmux source ~/.tmux.conf
+echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
+################################
+echo 'All tasks done!'
