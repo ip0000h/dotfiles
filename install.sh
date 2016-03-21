@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 ################################
-#Start
-echo 'Hello! You are running install script for dotfiles(configuration files for urxvt, bash, tmux, vim, etc).'
-echo 'Original project page - https://github.com/ip0000h/dotfiles'
+# Start
 echo 'Starting...'
 ################################
 # Bash
 echo 'Copying bash configuration files...'
+ln -fs "$(pwd)/bash/.bashrc" ~/.bashrc
+ln -fs "$(pwd)/bash/.bash_aliases" ~/.bash_aliases
+echo 'Done! Bash configuration installed.'
+################################
+# Zsh
+echo 'Copying zsh configuration files...'
 ln -fs "$(pwd)/bash/.bashrc" ~/.bashrc
 ln -fs "$(pwd)/bash/.bash_aliases" ~/.bash_aliases
 echo 'Done! Bash configuration installed.'
@@ -33,11 +37,11 @@ echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to compl
 ################################
 # Vim
 echo 'Copying vim configuration...'
-echo 'Installing TPM tmux plugin manager(https://github.com/tmux-plugins/tpm)...'
-mkdir -p ~/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-ln -fs "$(pwd)/tmux/.tmux.conf" ~/.tmux.conf
-tmux source ~/.tmux.conf
-echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
+################################
+# MC
+echo 'Copying mc configuration...'
+################################
+# Htop
+echo 'Copying htop configuration...'
 ################################
 echo 'All tasks done!'
