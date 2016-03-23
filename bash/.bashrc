@@ -90,7 +90,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -106,5 +106,5 @@ fi
 
 ## user-specific variables
 if [ -f ~/.bashrc_custom ]; then
-    . ~/.bashrc_custom
+    source ~/.bashrc_custom
 fi
