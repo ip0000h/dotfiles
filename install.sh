@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 ###############################################################################
 # Start
-dotfiles_dir = ~/.dotfiles
 echo 'Starting...'
+if [[ ! `which git` ]]; then
+    echo 'Git is not installed! Exiting...'
+    exit
+fi
+dotfiles_dir=~/.dotfiles
 if [ -d $dotfiles_dir ]; then
-    echo "Dotfiles directory already exist!"
+    echo 'Dotfiles directory already exist! Exiting...'
     exit
 else
     git clone git@github.com:ip0000h/dotfiles.git ~/.dotfiles
@@ -62,16 +66,6 @@ if [[ `which vim` ]]; then
     echo 'Done! Vim configuration installed.'
 else
     echo 'Vim is not installed. Skipping...'
-fi
-###############################################################################
-# MC
-if [[ `which mc` ]]; then
-    echo 'Copying mc configuration...'
-    ln -fs ".dotfiles/mc/ini" ~/.config/mc/ini
-    ln -fs ".dotfiles/mc/panels.ini" ~/.config/mc/panels.ini
-    echo 'Done! Mc configuration installed.'
-else
-    echo 'Mc is not installed. Skipping...'
 fi
 ###############################################################################
 # Htop
