@@ -14,7 +14,7 @@ This is my dotfiles project. There are many like it, but this one is mine.
 ## Installation
 Just run:
 ```bash
-sh -c "`curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/install.sh`"
+bash -c "`curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/install.sh`"
 ```
 
 ## Screenshot
