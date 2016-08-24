@@ -19,8 +19,4 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/i
 
 ## Screenshot
 ![screenshot](screenshots/tmux.png)
-
-## License
-[WTFPL](http://www.wtfpl.net/txt/copying/)
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ip0000h/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+![screenshot](screenshots/vim.png)
