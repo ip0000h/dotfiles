@@ -108,3 +108,6 @@ fi
 if [ -f ~/.bashrc_custom ]; then
     source ~/.bashrc_custom
 fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
