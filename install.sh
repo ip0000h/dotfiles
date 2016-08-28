@@ -9,7 +9,9 @@ if [[ ! `which git` ]]; then
 fi
 dotfiles_dir=~/.dotfiles
 if [ -d $dotfiles_dir ]; then
-    echo 'Dotfiles directory already exist! Exiting...'
+    echo 'Dotfiles directory already exist! Updating...'
+    cd $dotfiles_dir
+    git pull
     exit
 else
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
@@ -43,7 +45,7 @@ echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc_custom
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc_custom
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc_custom
 source ~/.bashrc_custom
-bash -c 'pyenv update'
+pyenv update
 echo 'Done! PyEnv configuration installed.'
 
 ###############################################################################
