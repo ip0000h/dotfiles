@@ -25,9 +25,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
+<<<<<<< HEAD
+=======
+Plugin 'axiaoxin/favorite-vim-colorscheme'
+Plugin 'mhinz/vim-startify'
+>>>>>>> fc0c26c858db37b731f32c1fb8e81bc2a88a6db5
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 call vundle#end()
