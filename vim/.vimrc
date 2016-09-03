@@ -7,46 +7,34 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" customize
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mhinz/vim-startify'
+
 Plugin 'mattn/emmet-vim'
-Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'walm/jshint.vim'
-Plugin 'moll/vim-node'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'axiaoxin/vim-json-line-format'
-Plugin 'axiaoxin/favorite-vim-colorscheme'
-Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
 filetype on
 filetype plugin on
 filetype plugin indent on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 set nobackup
 set noswapfile
@@ -62,7 +50,7 @@ set ignorecase
 
 set smartcase
 
-colorscheme Tomorrow-Night-Bright
+colorscheme molokai
 
 set showcmd
 
@@ -117,12 +105,9 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
-" instant-markdown
-let g:instant_markdown_slow = 1
-
-" airline
-let g:airline_section_y = '%{strftime("%H:%M")}'
-" tabline
+"airline
+let g:airline_powerline_fonts = 1
+"tabline
 let g:airline#extensions#tabline#enabled = 1
 " tabline buffer
 let g:airline#extensions#tabline#left_sep = ' '
@@ -151,6 +136,3 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " jshint
 autocmd! BufRead,BufWritePost *.js :JSHint
-
-" vim-table-mode: markdown
-let g:table_mode_corner="|"
