@@ -8,7 +8,7 @@ export DISABLE_AUTO_TITLE='true'
 ZSH_THEME="gnzh"
 
 # Plugins
-plugins=(common-aliases command-not-found docker git git-extras github pyenv tmux virtualenv web-search zsh-completions zsh-syntax-highlighting)
+plugins=(colored-man colorize common-aliases command-not-found docker git git-extras github pip pyenv python tmux virtualenv web-search zsh-completions zsh-syntax-highlighting)
 
 # Init oh-my-zsh
 source $ZSH/oh-my-zsh.sh
