@@ -12,3 +12,12 @@ plugins=(colored-man colorize common-aliases command-not-found docker git git-ex
 
 # Init oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+# PyEnv configuration
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# RbEnv configuration
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"

@@ -9,7 +9,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " customize
 Plugin 'tomasr/molokai'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
@@ -18,13 +17,17 @@ Plugin 'mhinz/vim-startify'
 
 Plugin 'mattn/emmet-vim'
 Plugin 'gorodinskiy/vim-coloresque'
+
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'walm/jshint.vim'
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Yggdroot/indentLine'
+
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
+
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'SirVer/ultisnips'
@@ -68,16 +71,16 @@ set tabstop=4
 set shiftwidth=4
 set shiftround
 
-" F2
+" <F2>
 nnoremap <F2> :set nonu!<CR>:set foldcolumn=0<CR>
 
-" F3
+" <F3>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 
-" F4 TagList
+" <F4> TagList
 nmap <silent> <F4> :TagbarToggle<CR>
 
-" F5
+" <F5>
 if exists("$VIRTUAL_ENV")
     autocmd FileType python map <buffer> <F5> :!$VIRTUAL_ENV'/bin/python' %<CR>
 else
@@ -96,18 +99,15 @@ autocmd FileType python map <buffer> <F8> :!autopep8 -i -a --ignore=W690,E501 %;
 " <F9> pep8 by yapf
 autocmd FileType python map <buffer> <F9> :!yapf -i % --style=pep8;isort %;<CR><CR>
 
-" NerdCommenter
-let g:NERDSpaceDelims=1
-
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['.git', '\.pyc$', '\~$']
 
 " CtrlP
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
-"airline
+" airline
 let g:airline_powerline_fonts = 1
-"tabline
+" tabline
 let g:airline#extensions#tabline#enabled = 1
 " tabline buffer
 let g:airline#extensions#tabline#left_sep = ' '
