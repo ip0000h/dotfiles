@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " customize
-Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
@@ -52,8 +51,6 @@ set autoread
 set ignorecase
 
 set smartcase
-
-colorscheme molokai
 
 set showcmd
 
