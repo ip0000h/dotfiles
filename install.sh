@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -o nounset
+set -o errexit
 
 ###############################################################################
 # Start
@@ -70,7 +72,7 @@ if [[ `which vim` ]]; then
     echo 'Copying vim configuration...'
     ln -fs "$dotfiles_dir/vim/.vimrc" ~/.vimrc
     echo 'Installing plugins...'
-    vim +PluginInstall +qall
+    vim +PluginInstall +qall > /dev/null
     echo 'Done! Vim configuration installed.'
 else
     echo 'Vim is not installed. Skipping...'
