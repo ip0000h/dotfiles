@@ -1,0 +1,11 @@
+aiohttp
+aioresponses
+bpython
+flake8
+mitmproxy
+pip-tools
+pipdeptree
+pipreqs
+pylint
+pythonloc
+setuptools
