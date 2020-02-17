@@ -5,30 +5,31 @@ set -o errexit
 ###############################################################################
 # Start
 echo 'Starting...'
+
 if [[ ! `which git` ]]; then
     echo 'Git is not installed! Exiting...'
-    exit
+    exit 1
 fi
+
 dotfiles_dir=~/.dotfiles
+
 if [ -d $dotfiles_dir ]; then
     echo 'Dotfiles directory already exist! Updating...'
     cd $dotfiles_dir
     git pull
-    exit
+    exit 1
 else
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
 fi
 
-###############################################################################
+##############################################################################
 # Bash
 echo 'Copying bash configuration files...'
 ln -fs "$dotfiles_dir/bash/.bashrc" ~/.bashrc
-ln -fs "$dotfiles_dir/bash/.bash_aliases" ~/.bash_aliases
-echo 'Done! Bash configuration installed.'
 
 ###############################################################################
 # Zsh
-if [[ `which zsh` ]]; then
+if [[ ! `which zsh` ]]; then
     echo 'Installing oh-my-zsh(http://ohmyz.sh/)...'
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo 'Copying zsh configuration files...'
@@ -40,6 +41,7 @@ fi
 
 ###############################################################################
 # PyEnv
+if [[ ! `which zsh` ]]; then
 echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
 echo '# PyEnv configuration' >> ~/.bashrc_custom
 curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
@@ -76,16 +78,6 @@ if [[ `which vim` ]]; then
     echo 'Done! Vim configuration installed.'
 else
     echo 'Vim is not installed. Skipping...'
-fi
-
-###############################################################################
-# Htop
-if [[ `which htop` ]]; then
-    echo 'Copying htop configuration...'
-    ln -fs "$dotfiles_dir/htop/htoprc" ~/.config/htop/htoprc
-    echo 'Done! Htop configuration installed.'
-else
-    echo 'Htop is not installed. Skipping...'
 fi
 
 ###############################################################################
