@@ -41,7 +41,6 @@ fi
 
 ###############################################################################
 # PyEnv
-if [[ ! `which zsh` ]]; then
 echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
 echo '# PyEnv configuration' >> ~/.bashrc_custom
 curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
