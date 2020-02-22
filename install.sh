@@ -27,6 +27,7 @@ else
     # Bash
     echo 'Copying bash configuration files...'
     ln -fs "$dotfiles_dir/bash/.bashrc" ~/.bashrc
+    ln -fs "$dotfiles_dir/bash/.bash_aliases" ~/.bash_aliases
 
     ###############################################################################
     # Zsh
