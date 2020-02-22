@@ -14,7 +14,7 @@ if [ -d $dotfiles_dir ]; then
     git pull
 else
     # needed apps
-    sudo apt-get update && sudo apt-get install -y git zsh tmux vim
+    sudo apt-get update && sudo apt-get install -y git zsh tmux vim direnv
 
     # pyenv deps
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
