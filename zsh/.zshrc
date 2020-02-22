@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/ip0000h/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # For tmuxp
 export DISABLE_AUTO_TITLE='true'
@@ -19,9 +19,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 source $HOME/.bash_aliases
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # Direnv configuration
 eval "$(direnv hook zsh)"
