@@ -6,54 +6,38 @@ set -o errexit
 # Start
 echo 'Starting...'
 
-if [[ ! `which git` ]]; then
-    echo 'Git is not installed! Exiting...'
-    exit 1
-fi
-
 dotfiles_dir=~/.dotfiles
 
 if [ -d $dotfiles_dir ]; then
     echo 'Dotfiles directory already exist! Updating...'
     cd $dotfiles_dir
     git pull
-    exit 1
 else
+    # needed apps
+    sudo apt-get update && sudo apt-get install -y git zsh tmux vim
+
+    # pyenv deps
+    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
-fi
 
-##############################################################################
-# Bash
-echo 'Copying bash configuration files...'
-ln -fs "$dotfiles_dir/bash/.bashrc" ~/.bashrc
+    ##############################################################################
+    # Bash
+    echo 'Copying bash configuration files...'
+    ln -fs "$dotfiles_dir/bash/.bashrc" ~/.bashrc
 
-###############################################################################
-# Zsh
-if [[ ! `which zsh` ]]; then
+    ###############################################################################
+    # Zsh
     echo 'Installing oh-my-zsh(http://ohmyz.sh/)...'
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo 'Copying zsh configuration files...'
     ln -fs "$dotfiles_dir/zsh/.zshrc" ~/.zshrc
     echo 'Done! Zsh configuration installed.'
-else
-    echo 'Zsh is not installed. Skipping...'
-fi
 
-###############################################################################
-# PyEnv
-echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
-echo '# PyEnv configuration' >> ~/.bashrc_custom
-curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc_custom
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc_custom
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc_custom
-source ~/.bashrc_custom
-pyenv update
-echo 'Done! PyEnv configuration installed.'
-
-###############################################################################
-# Tmux
-if [[ `which tmux` ]]; then
+    ###############################################################################
+    # Tmux
     echo 'Installing TPM tmux plugin manager(https://github.com/tmux-plugins/tpm)...'
     mkdir -p ~/.tmux/plugins
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -61,13 +45,9 @@ if [[ `which tmux` ]]; then
     ln -fs "$dotfiles_dir/tmux/.tmux.conf" ~/.tmux.conf
     tmux source ~/.tmux.conf
     echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
-else
-    echo 'Tmux is not installed. Skipping...'
-fi
 
-###############################################################################
-# Vim
-if [[ `which vim` ]]; then
+    ###############################################################################
+    # Vim
     echo 'Installing Vundle vim plugin manager(https://github.com/VundleVim/Vundle.vim)...'
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     echo 'Copying vim configuration...'
@@ -75,8 +55,22 @@ if [[ `which vim` ]]; then
     echo 'Installing plugins...'
     vim +PluginInstall +qall > /dev/null
     echo 'Done! Vim configuration installed.'
-else
-    echo 'Vim is not installed. Skipping...'
+
+    ###############################################################################
+    # PyEnv
+    if [[ ! `which pyenv` ]]; then
+        echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
+        echo '# PyEnv configuration' >> ~/.bashrc_custom
+        curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc_custom
+        echo 'eval "$(pyenv init -)"' >> ~/.bashrc_custom
+        echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc_custom
+        source ~/.bashrc_custom
+        pyenv update
+        echo 'Done! PyEnv configuration installed.'
+    else
+        pyenv update
+    fi
 fi
 
 ###############################################################################
