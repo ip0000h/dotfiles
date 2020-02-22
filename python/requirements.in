@@ -1,9 +1,6 @@
-aiohttp
-aioresponses
+bandit
 bpython
 flake8
-mitmproxy
-pip-tools
 pipdeptree
 pipreqs
 pylint
