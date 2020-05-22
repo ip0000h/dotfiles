@@ -1,8 +1,14 @@
+aiohttp
 bandit
 bpython
 flake8
+Glances
+notebook
+pip-tools
 pipdeptree
 pipreqs
 pylint
 pythonloc
-setuptools
+rope
+tqdm
+uWSGI

@@ -72,6 +72,9 @@ else
     else
         pyenv update
     fi
+
+    ###############################################################################
+    # Python
     pyenv install 3.7-dev
     pyenv global 3.7-dev
     pip install pip-tools
