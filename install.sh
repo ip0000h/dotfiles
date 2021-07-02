@@ -44,7 +44,6 @@ else
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     echo 'Copying tmux configuration...'
     ln -fs "$dotfiles_dir/tmux/.tmux.conf" ~/.tmux.conf
-    tmux source ~/.tmux.conf
     echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
 
     ###############################################################################
