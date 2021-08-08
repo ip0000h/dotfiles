@@ -35,6 +35,7 @@ else
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo 'Copying zsh configuration files...'
     ln -fs "$dotfiles_dir/zsh/.zshrc" ~/.zshrc
+    ln -fs "$dotfiles_dir/zsh/.zprofile" ~/.zprofile
     echo 'Done! Zsh configuration installed.'
 
     ###############################################################################
