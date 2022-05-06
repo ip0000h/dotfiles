@@ -18,6 +18,10 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# GoEnv configuration
+export PATH="$HOME/.goenv/bin:$PATH"
+eval "$(goenv init -)"
+
 source $HOME/.bash_aliases
 
 # Direnv configuration
