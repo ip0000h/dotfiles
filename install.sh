@@ -75,8 +75,8 @@ else
 
     ###############################################################################
     # Python
-    pyenv install 3.7-dev
-    pyenv global 3.7-dev
+    pyenv install 3.11-dev
+    pyenv global 3.11-dev
     pip install pip-tools
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip
