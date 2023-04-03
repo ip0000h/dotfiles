@@ -10,12 +10,15 @@ cmake
 Cython
 dulwich
 flake8
+fqdn
 gevent
 Glances
 hiredis
 installer
 ipdb
 iso8601
+isoduration
+jsonpointer
 keyring
 lit
 lockfile
@@ -40,6 +43,7 @@ pylint
 pyserial
 python-nmap
 pythonloc
+pyupgrade
 PyX
 requests-toolbelt
 requirements-parser
@@ -52,5 +56,7 @@ sqlmap
 suds
 sympy
 testpath
+uri-template
 uWSGI
 vulners
+webcolors
