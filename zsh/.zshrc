@@ -8,7 +8,29 @@ export DISABLE_AUTO_TITLE='true'
 ZSH_THEME="gnzh"
 
 # Plugins
-plugins=(colorize common-aliases command-not-found docker docker-compose git git-extras github kubectl minikube node npm nvm pip pyenv pylint python tmux virtualenv web-search)
+plugins=(
+    colorize
+    common-aliases
+    command-not-found
+    docker
+    docker-compose
+    git
+    git-extras
+    github
+    kubectl
+    minikube
+    node
+    npm
+    nvm
+    pip
+    poetry
+    pyenv
+    pylint
+    python
+    tmux
+    virtualenv
+    web-search
+)
 
 # Init oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -21,6 +43,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# Poetry configuration
+export PATH="/home/ip0000h/.local/bin:$PATH"
+
 # Direnv configuration
 eval "$(direnv hook zsh)"
 
@@ -30,8 +55,8 @@ eval "$(goenv init -)"
 
 # Nvm configuration
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # GoLang binaries
 export PATH=$PATH:$(go env GOPATH)/bin
