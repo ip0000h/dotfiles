@@ -29,6 +29,8 @@ plugins=(
     tmux
     virtualenv
     web-search
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 # Init oh-my-zsh
