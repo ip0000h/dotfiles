@@ -14,7 +14,7 @@ if [ -d $dotfiles_dir ]; then
     git pull
 else
     # needed apps
-    sudo apt-get update && sudo apt-get install -y git zsh tmux vim direnv
+    sudo apt-get update && sudo apt-get install -y git zsh tmux vim
 
     # pyenv deps
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -75,8 +75,8 @@ else
 
     ###############################################################################
     # Python
-    pyenv install 3.11-dev
-    pyenv global 3.11-dev
+    pyenv install 3.11
+    pyenv global 3.11
     pip install pip-tools
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip

@@ -1,62 +1,15 @@
-aiohttp
-bandit
-black
-blessings
-bpython
-cachy
-chardet
-cleo
-cmake
-Cython
-dulwich
-flake8
-fqdn
-gevent
-Glances
-hiredis
-installer
-ipdb
-iso8601
-isoduration
-jsonpointer
-keyring
-lit
-lockfile
-matplotlib
-mypy
-networkx
-nose
-notebook
-onionsearch
-pandas
-pastel
-pep517
-pip_audit
-pip-tools
-pipdeptree
-pipenv
-pipreqs
-progress
-py-spy
-pylev
-pylint
-pyserial
-python-nmap
-pythonloc
-pyupgrade
-PyX
-requests-toolbelt
-requirements-parser
-resolvelib
-rope
-scapy
-scrapyd
-shellingham
-sqlmap
-suds
-sympy
-testpath
-uri-template
-uWSGI
-vulners
-webcolors
+bandit # a tool designed to find common security issues in Python code
+blessings # a thin, practical wrapper around terminal capabilities in Python
+chardet # the universal character encoding detector
+cleo # create beautiful and testable command-line interfaces
+httpx # a fully featured HTTP client for Python 3, which provides sync and async APIs, and support for both HTTP/1.1 and HTTP/2.
+IPython # interactive computing
+ipdb # integration of IPython pdb
+matplotlib # visualization with Python
+notebook # Jupyter Notebook
+pandas # a fast, powerful, flexible and easy to use open source data analysis and manipulation tool
+pip-tools # a set of third party command line tools designed to help with Python 3 dependency management
+pipdeptree # a command line utility for displaying the installed python packages in form of a dependency tree
+py-spy # a sampling profiler for Python programs
+python-nmap # a python library which helps in using nmap port scanner
+ruff # an extremely fast Python linter

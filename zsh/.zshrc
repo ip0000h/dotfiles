@@ -25,7 +25,6 @@ plugins=(
     pip
     poetry
     pyenv
-    pylint
     python
     tmux
     virtualenv
@@ -44,10 +43,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Poetry configuration
-export PATH="/home/ip0000h/.local/bin:$PATH"
-
-# Direnv configuration
-eval "$(direnv hook zsh)"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Nvm configuration
 export NVM_DIR="$HOME/.nvm"
