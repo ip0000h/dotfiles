@@ -10,6 +10,7 @@ notebook # Jupyter Notebook
 pandas # a fast, powerful, flexible and easy to use open source data analysis and manipulation tool
 pip-tools # a set of third party command line tools designed to help with Python 3 dependency management
 pipdeptree # a command line utility for displaying the installed python packages in form of a dependency tree
+poetry # a tool for dependency management and packaging in Python
 py-spy # a sampling profiler for Python programs
 python-nmap # a python library which helps in using nmap port scanner
 ruff # an extremely fast Python linter
