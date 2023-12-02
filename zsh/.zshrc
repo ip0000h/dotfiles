@@ -36,15 +36,25 @@ plugins=(
 # Init oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# bash aliases
-source $HOME/.bash_aliases
+# aliases
+alias ll="ls -alrtF"
+alias la="ls -A"
+alias l="ls -CF"
+alias m='less'
+alias ..='cd ..'
+alias ...='cd ..;cd ..'
+alias md='mkdir'
+alias cl='clear'
+alias du='du -ch --max-depth=1'
+alias treeacl='tree -A -C -L 2'
+alias piptop='~/.dotfiles/utils/piptop.sh'
 
 # PyEnv configuration
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Poetry configuration
+# Local binaries and scripts
 export PATH="$HOME/.local/bin:$PATH"
 
 # Nvm configuration

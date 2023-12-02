@@ -23,12 +23,6 @@ else
 
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
 
-    ##############################################################################
-    # Bash
-    echo 'Copying bash configuration files...'
-    ln -fs "$dotfiles_dir/bash/.bashrc" ~/.bashrc
-    ln -fs "$dotfiles_dir/bash/.bash_aliases" ~/.bash_aliases
-
     ###############################################################################
     # Zsh
     echo 'Installing oh-my-zsh(http://ohmyz.sh/)...'
@@ -37,7 +31,6 @@ else
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     echo 'Copying zsh configuration files...'
     ln -fs "$dotfiles_dir/zsh/.zshrc" ~/.zshrc
-    ln -fs "$dotfiles_dir/zsh/.zprofile" ~/.zprofile
     echo 'Done! Zsh configuration installed.'
 
     ###############################################################################
@@ -83,6 +76,11 @@ else
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip
     pip install -r "$dotfiles_dir/python/requirements.txt"
+
+    ###############################################################################
+    # NVM
+
+
 fi
 
 ###############################################################################
