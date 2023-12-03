@@ -26,7 +26,11 @@ else
     ###############################################################################
     # Zsh
     echo 'Installing oh-my-zsh(http://ohmyz.sh/)...'
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    if [ -d "~/.oh-my-zsh" ]; then
+        echo 'oh-my-zsh is already installed!'
+    else
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     echo 'Copying zsh configuration files...'
