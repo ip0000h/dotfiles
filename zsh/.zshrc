@@ -47,7 +47,7 @@ alias md='mkdir'
 alias cl='clear'
 alias du='du -ch --max-depth=1'
 alias treeacl='tree -A -C -L 2'
-alias piptop='~/.dotfiles/utils/piptop.sh'
+alias piptop='pipdeptree --freeze | grep --only-matching --perl-regexp "^[\w\-]+" | grep --invert-match "\-e\|pkg"'
 
 # PyEnv configuration
 export PATH="$HOME/.pyenv/bin:$PATH"
