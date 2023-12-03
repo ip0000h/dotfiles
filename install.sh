@@ -56,12 +56,12 @@ else
     # PyEnv
     if [[ ! `which pyenv` ]]; then
         echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
-        echo '# PyEnv configuration' >> ~/.bashrc_custom
         curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc_custom
-        echo 'eval "$(pyenv init -)"' >> ~/.bashrc_custom
-        echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc_custom
-        source ~/.bashrc_custom
+        echo '\n# PyEnv configuration' >> ~/.profile >> ~/.zprofile
+        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.profile >> ~/.zprofile
+        echo 'eval "$(pyenv init -)"' >> ~/.profile >> ~/.zprofile
+        echo 'eval "$(pyenv virtualenv-init -)"\n' >> ~/.profile >> ~/.zprofile
+        source ~/.zprofile
         pyenv update
         echo 'Done! PyEnv configuration installed.'
     else
@@ -76,10 +76,6 @@ else
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip
     pip install -r "$dotfiles_dir/python/requirements.txt"
-
-    ###############################################################################
-    # NVM
-
 
 fi
 

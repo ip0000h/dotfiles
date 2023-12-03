@@ -18,7 +18,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'gorodinskiy/vim-coloresque'
 
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'walm/jshint.vim'
 
 Plugin 'airblade/vim-gitgutter'
