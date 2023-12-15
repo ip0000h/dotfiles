@@ -14,7 +14,7 @@ if [ -d $dotfiles_dir ]; then
     git pull
 else
     # needed apps
-    sudo apt-get update && sudo apt-get install -y git zsh tmux vim
+    sudo apt-get update && sudo apt-get install -y git zsh tmux vim nano
 
     # pyenv deps
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -47,24 +47,19 @@ else
     echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
 
     ###############################################################################
-    # Vim
-    echo 'Installing Vundle vim plugin manager(https://github.com/VundleVim/Vundle.vim)...'
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    echo 'Copying vim configuration...'
-    ln -fs "$dotfiles_dir/vim/.vimrc" ~/.vimrc
-    echo 'Installing plugins...'
-    vim +PluginInstall +qall > /dev/null
-    echo 'Done! Vim configuration installed.'
+    # Nano
+    echo 'Installing nano configs(https://github.com/scopatz/nanorc)...'
+    curl -L https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
     ###############################################################################
     # PyEnv
     if [[ ! `which pyenv` ]]; then
         echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
         curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-        echo '\n# PyEnv configuration' >> ~/.profile >> ~/.zprofile
+        echo '# PyEnv configuration' >> ~/.profile >> ~/.zprofile
         echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.profile >> ~/.zprofile
         echo 'eval "$(pyenv init -)"' >> ~/.profile >> ~/.zprofile
-        echo 'eval "$(pyenv virtualenv-init -)"\n' >> ~/.profile >> ~/.zprofile
+        echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile >> ~/.zprofile
         source ~/.zprofile
         pyenv update
         echo 'Done! PyEnv configuration installed.'
@@ -74,8 +69,8 @@ else
 
     ###############################################################################
     # Python
-    pyenv install 3.11
-    pyenv global 3.11
+    pyenv install 3.12
+    pyenv global 3.12
     pip install pip-tools
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip
