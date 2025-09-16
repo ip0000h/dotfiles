@@ -69,8 +69,8 @@ else
 
     ###############################################################################
     # Python
-    pyenv install 3.12
-    pyenv global 3.12
+    pyenv install 3.14
+    pyenv global 3.14
     pip install pip-tools
     pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
     pip install --upgrade pip
