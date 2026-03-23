@@ -16,11 +16,6 @@ else
     # needed apps
     sudo apt-get update && sudo apt-get install -y git zsh tmux vim nano
 
-    # pyenv deps
-    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev
-
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
 
     ###############################################################################
@@ -52,29 +47,13 @@ else
     curl -L https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
     ###############################################################################
-    # PyEnv
-    if [[ ! `which pyenv` ]]; then
-        echo 'Installing pyenv application(https://github.com/yyuu/pyenv)...'
-        curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-        echo '# PyEnv configuration' >> ~/.profile >> ~/.zprofile
-        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.profile >> ~/.zprofile
-        echo 'eval "$(pyenv init -)"' >> ~/.profile >> ~/.zprofile
-        echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile >> ~/.zprofile
-        source ~/.zprofile
-        pyenv update
-        echo 'Done! PyEnv configuration installed.'
-    else
-        pyenv update
-    fi
-
-    ###############################################################################
-    # Python
-    pyenv install 3.14
-    pyenv global 3.14
-    pip install pip-tools
-    pip-compile "$dotfiles_dir/python/requirements.in" > "$dotfiles_dir/python/requirements.txt"
-    pip install --upgrade pip
-    pip install -r "$dotfiles_dir/python/requirements.txt"
+    # UV + Python
+    echo 'Installing uv(https://github.com/astral-sh/uv)...'
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.local/bin:$PATH"
+    uv python install 3.14
+    cd "$dotfiles_dir/python" && uv sync
+    echo 'Done! UV and Python configuration installed.'
 
 fi
 

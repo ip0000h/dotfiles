@@ -24,7 +24,6 @@ plugins=(
     nvm
     pip
     poetry
-    pyenv
     python
     tmux
     virtualenv
@@ -48,11 +47,6 @@ alias cl='clear'
 alias du='du -ch --max-depth=1'
 alias treeacl='tree -A -C -L 2'
 alias piptop='pipdeptree --freeze | grep --only-matching --perl-regexp "^[\w\-]+" | grep --invert-match "\-e\|pkg"'
-
-# PyEnv configuration
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # Local binaries and scripts
 export PATH="$HOME/.local/bin:$PATH"
