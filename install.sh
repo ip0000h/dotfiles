@@ -8,9 +8,9 @@ echo 'Starting...'
 
 dotfiles_dir=~/.dotfiles
 
-if [ -d $dotfiles_dir ]; then
+if [ -d "$dotfiles_dir" ]; then
     echo 'Dotfiles directory already exist! Updating...'
-    cd $dotfiles_dir
+    cd "$dotfiles_dir"
     git pull
 else
     # needed apps
@@ -21,10 +21,10 @@ else
     ###############################################################################
     # Zsh
     echo 'Installing oh-my-zsh(http://ohmyz.sh/)...'
-    if [ -d "~/.oh-my-zsh" ]; then
+    if [ -d "$HOME/.oh-my-zsh" ]; then
         echo 'oh-my-zsh is already installed!'
     else
-        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

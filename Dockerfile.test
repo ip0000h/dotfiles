@@ -1,0 +1,44 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV HOME=/root
+
+RUN apt-get update && apt-get install -y git zsh tmux vim nano curl ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY . /root/.dotfiles
+
+# Install oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# Install zsh plugins
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Symlink configs
+RUN ln -fs /root/.dotfiles/zsh/.zshrc /root/.zshrc \
+    && ln -fs /root/.dotfiles/tmux/.tmux.conf /root/.tmux.conf
+
+# Install uv and Python
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:$PATH"
+RUN uv python install 3.14
+
+# Install Python packages
+RUN cd /root/.dotfiles/python && uv sync
+
+# Install TPM
+RUN mkdir -p /root/.tmux/plugins \
+    && git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+
+# Verify everything works
+RUN echo "=== Verification ===" \
+    && echo "--- zsh ---" && zsh --version \
+    && echo "--- tmux ---" && tmux -V \
+    && echo "--- uv ---" && uv --version \
+    && echo "--- python ---" && uv run --project /root/.dotfiles/python python --version \
+    && echo "--- zshrc syntax ---" && zsh -n /root/.zshrc \
+    && echo "--- tmux config syntax ---" && tmux -f /root/.tmux.conf start-server \; kill-server \
+    && echo "=== All checks passed ==="
+
+CMD ["zsh"]

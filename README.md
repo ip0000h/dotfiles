@@ -12,7 +12,15 @@ This is my dotfiles project. There are many like it, but this one is mine.
 ## Installation
 Just run:
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/install.sh`"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/install.sh)"
+```
+
+## Testing
+
+Build and run the test container to verify everything works:
+```bash
+docker build -f Dockerfile.test -t dotfiles-test .
+docker run --rm -it dotfiles-test
 ```
 
 ## Screenshot

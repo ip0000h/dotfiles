@@ -16,18 +16,12 @@ plugins=(
     docker-compose
     git
     git-extras
-    github
     kubectl
     minikube
-    node
     npm
-    nvm
     pip
-    poetry
     python
     tmux
-    virtualenv
-    web-search
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -51,10 +45,17 @@ alias piptop='pipdeptree --freeze | grep --only-matching --perl-regexp "^[\w\-]+
 # Local binaries and scripts
 export PATH="$HOME/.local/bin:$PATH"
 
-# Nvm configuration
+# Nvm lazy-loading
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+nvm() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm "$@"
+}
+node() { nvm use default >/dev/null 2>&1; unset -f node; node "$@"; }
+npm() { nvm use default >/dev/null 2>&1; unset -f npm; npm "$@"; }
+npx() { nvm use default >/dev/null 2>&1; unset -f npx; npx "$@"; }
 
 # Source all files from a specific folder
 if [ -d "$HOME/.local/etc" ]; then
