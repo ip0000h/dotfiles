@@ -19,7 +19,6 @@ plugins=(
     kubectl
     minikube
     npm
-    pip
     python
     tmux
     zsh-autosuggestions
@@ -29,21 +28,15 @@ plugins=(
 # Init oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# aliases
-alias ll="ls -alrtF"
-alias la="ls -A"
-alias l="ls -CF"
-alias m='less'
-alias ..='cd ..'
-alias ...='cd ..;cd ..'
-alias md='mkdir'
-alias cl='clear'
-alias du='du -ch --max-depth=1'
-alias treeacl='tree -A -C -L 2'
-alias piptop='pipdeptree --freeze | grep --only-matching --perl-regexp "^[\w\-]+" | grep --invert-match "\-e\|pkg"'
-
 # Local binaries and scripts
 export PATH="$HOME/.local/bin:$PATH"
+
+# Source dotfiles aliases
+if [ -d "$HOME/.dotfiles/aliases" ]; then
+  for file in "$HOME/.dotfiles/aliases"/*.sh; do
+    [ -f "$file" ] && source "$file"
+  done
+fi
 
 # Nvm lazy-loading
 export NVM_DIR="$HOME/.nvm"

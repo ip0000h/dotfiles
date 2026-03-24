@@ -1,8 +1,11 @@
 # Dotfiles
+
 ## Project information
+
 This is my dotfiles project. There are many like it, but this one is mine.
 
 ## What's included
+
 - [zsh](http://www.zsh.org/)(shell) configuration with [oh-my-zsh](https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)
 - [uv](https://github.com/astral-sh/uv)(python package and version manager) auto setup + pre-installed packages
 - [nvm](https://github.com/nvm-sh/nvm)(nodeJS version manager) auto setup with plugins
@@ -10,7 +13,9 @@ This is my dotfiles project. There are many like it, but this one is mine.
 - [nano configuration](https://github.com/scopatz/nanorc)
 
 ## Installation
+
 Just run:
+
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/install.sh)"
 ```
@@ -18,10 +23,12 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ip0000h/dotfiles/master/
 ## Testing
 
 Build and run the test container to verify everything works:
+
 ```bash
 docker build -f Dockerfile.test -t dotfiles-test .
 docker run --rm -it dotfiles-test
 ```
 
 ## Screenshot
+
 ![screenshot](screenshots/tmux.png)

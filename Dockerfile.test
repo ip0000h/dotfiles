@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/root
 
-RUN apt-get update && apt-get install -y git zsh tmux vim nano curl ca-certificates \
+RUN apt-get update && apt-get install -y git zsh tmux vim nano curl ca-certificates dnsutils \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . /root/.dotfiles
@@ -38,6 +38,7 @@ RUN echo "=== Verification ===" \
     && echo "--- uv ---" && uv --version \
     && echo "--- python ---" && uv run --project /root/.dotfiles/python python --version \
     && echo "--- zshrc syntax ---" && zsh -n /root/.zshrc \
+    && echo "--- aliases ---" && zsh -c 'source /root/.zshrc && alias ll && alias dk && alias kc' \
     && echo "--- tmux config syntax ---" && tmux -f /root/.tmux.conf start-server \; kill-server \
     && echo "=== All checks passed ==="
 
