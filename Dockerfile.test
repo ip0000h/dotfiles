@@ -2,8 +2,9 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/root
+ENV TERM=xterm
 
-RUN apt-get update && apt-get install -y git zsh tmux vim nano curl ca-certificates dnsutils fzf direnv \
+RUN apt-get update && apt-get install -y git zsh tmux vim nano curl wget unzip ca-certificates dnsutils fzf direnv sudo \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . /root/.dotfiles
@@ -17,15 +18,15 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/ro
     && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-completions \
     && git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/you-should-use
 
+# Symlink configs
+RUN ln -fs /root/.dotfiles/zsh/.zshrc /root/.zshrc \
+    && ln -fs /root/.dotfiles/tmux/.tmux.conf /root/.tmux.conf
+
 # Install CLI tools
 RUN curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh \
     && git clone https://github.com/ahmetb/kubectx /opt/kubectx \
     && ln -fs /opt/kubectx/kubectx /usr/local/bin/kubectx \
     && ln -fs /opt/kubectx/kubens /usr/local/bin/kubens
-
-# Symlink configs
-RUN ln -fs /root/.dotfiles/zsh/.zshrc /root/.zshrc \
-    && ln -fs /root/.dotfiles/tmux/.tmux.conf /root/.tmux.conf
 
 # Install uv and Python
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -49,6 +50,7 @@ RUN echo "=== Verification ===" \
     && echo "--- aliases ---" && zsh -c 'source /root/.zshrc && alias ll && alias dk && alias kc' \
     && echo "--- tools ---" && fzf --version && zoxide --version && which kubectx && which kubens && direnv --version \
     && echo "--- tmux config syntax ---" && tmux -f /root/.tmux.conf start-server \; kill-server \
+    && echo "--- idempotent re-run ---" && git -C /root/.dotfiles init -q && bash /root/.dotfiles/install.sh \
     && echo "=== All checks passed ==="
 
 CMD ["zsh"]
