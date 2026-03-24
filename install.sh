@@ -14,7 +14,7 @@ if [ -d "$dotfiles_dir" ]; then
     git pull
 else
     # needed apps
-    sudo apt-get update && sudo apt-get install -y git zsh tmux vim nano
+    sudo apt-get update && sudo apt-get install -y git zsh tmux vim nano fzf direnv
 
     git clone git@github.com:ip0000h/dotfiles.git $dotfiles_dir
 
@@ -28,6 +28,8 @@ else
     fi
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
     echo 'Copying zsh configuration files...'
     ln -fs "$dotfiles_dir/zsh/.zshrc" ~/.zshrc
     echo 'Done! Zsh configuration installed.'
@@ -40,6 +42,16 @@ else
     echo 'Copying tmux configuration...'
     ln -fs "$dotfiles_dir/tmux/.tmux.conf" ~/.tmux.conf
     echo 'Done! Tmux configuration installed. Run it and press `prefix` + I to complete install plugins.'
+
+    ###############################################################################
+    # CLI tools
+    echo 'Installing zoxide...'
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    echo 'Installing kubectx/kubens...'
+    sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+    sudo ln -fs /opt/kubectx/kubectx /usr/local/bin/kubectx
+    sudo ln -fs /opt/kubectx/kubens /usr/local/bin/kubens
+    echo 'Done! CLI tools installed.'
 
     ###############################################################################
     # Nano

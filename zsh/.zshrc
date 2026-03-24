@@ -9,11 +9,12 @@ ZSH_THEME="gnzh"
 
 # Plugins
 plugins=(
-    colorize
     common-aliases
     command-not-found
+    direnv
     docker
     docker-compose
+    fzf
     git
     git-extras
     kubectl
@@ -21,7 +22,9 @@ plugins=(
     npm
     python
     tmux
+    you-should-use
     zsh-autosuggestions
+    zsh-completions
     zsh-syntax-highlighting
 )
 
@@ -37,6 +40,9 @@ if [ -d "$HOME/.dotfiles/aliases" ]; then
     [ -f "$file" ] && source "$file"
   done
 fi
+
+# Zoxide (smart cd)
+eval "$(zoxide init zsh)"
 
 # Nvm lazy-loading
 export NVM_DIR="$HOME/.nvm"
